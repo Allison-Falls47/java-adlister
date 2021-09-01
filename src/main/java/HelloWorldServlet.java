@@ -7,7 +7,6 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/hello")
 public class HelloWorldServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.out.println("Hello");
-        response.getWriter().println("Hello");
+        response.getWriter().println("Hello World!");
     }
 }
