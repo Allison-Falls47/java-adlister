@@ -5,16 +5,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name ="HelloWordServlet", urlPatterns = "/hello")
-public class HelloWorldServlet extends HttpServlet {
+@WebServlet(name ="CountServlet", urlPatterns = "/count")
+public class CountServlet extends HttpServlet {
+    int timesVisited = 0;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
-        //PrintWriter out = response.getWriter();
-        //out.println(<h1>Hello, World!"</h1>);
-        String name = request.getParameter("name");
-        response.getWriter().println("<h1>Hello World!<h1>");
-        response.getWriter().println(name);
+        PrintWriter out = response.getWriter();
+        String reset = request.getParameter("reset");
+        timesVisited++;
+
+        if (reset != null && reset.equals("letsreset")){
+            timesVisited = 0;
+        }
+        out.println(timesVisited);
+
     }
 }
