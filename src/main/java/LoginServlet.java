@@ -13,9 +13,14 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        HttpSession currentSession = request.getSession();
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         if (username.equals("admin") && password.equals("password")) {
+            currentSession.setAttribute("loggedIn",true);
+//            currentSession.setAttribute("currentUser",new User("allison","falls"));
             response.sendRedirect("/profile");
         }else{
             response.sendRedirect("/login");
